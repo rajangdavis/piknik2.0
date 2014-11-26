@@ -10,7 +10,7 @@ validates_attachment_content_type :image, content_type: ["image/jpg", "image/jpe
   	
 
 
-    validates_presence_of_attached_file
+    
 
 
 end
