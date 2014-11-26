@@ -26,7 +26,7 @@ class StreamsController < ApplicationController
 
   def create
     @user_id = current_user.id
-    @stream = Stream.new(params[:user_id])
+    @stream = Stream.new(stream_params)
     if @stream.save
       redirect_to edit_stream_path(@stream)
     else
