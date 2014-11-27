@@ -6,6 +6,8 @@ class StreamsController < ApplicationController
   end
   
   def edit
+    @image = Image.new
+    @images = Image.all
     @stream = Stream.find(params[:id])
   end
 
@@ -40,6 +42,7 @@ class StreamsController < ApplicationController
     @stream = Stream.find(params[:id])
     @stream.destroy
   end
+  
   
   private
 
