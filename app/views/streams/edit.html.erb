@@ -1,1 +1,18 @@
 <h1><%= @stream.name %></h1>
+<% if flash[:notice] %><br><br>
+    <div class="text-center bg-danger"><%= flash[:notice] %></div>
+<% end %>
+
+	
+<% @images.each do |image|%>
+	<% if image.stream_id == @stream.id%>
+		<%= image_tag image.image.url(:small) %>
+	<% end %>
+<% end%>
+
+
+<%=form_for(@image, :url => {:action =>:create, :controller => :images}) do |f|%>
+	<%= f.file_field :image %>
+	<%= f.hidden_field :stream_id, :value => @stream.id%>
+	<%= f.submit "Add Image"%>
+<% end %>
