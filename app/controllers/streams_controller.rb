@@ -10,7 +10,8 @@ class StreamsController < ApplicationController
   end
 
   def index
-    @stream = Stream.find(params[:id])
+    # @streams= Stream.all
+    @streams = Stream.find(params[:id])
     redirect_to edit_stream_path(:stream)
   end
 
