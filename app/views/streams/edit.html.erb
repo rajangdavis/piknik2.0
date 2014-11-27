@@ -4,9 +4,11 @@
 <% end %>
 
 	
-	<% @images.each do |image|%>
+<% @images.each do |image|%>
+	<% if image.stream_id == @stream.id%>
 		<%= image_tag image.image.url(:small) %>
-	<% end%>
+	<% end %>
+<% end%>
 
 
 <%=form_for(@image, :url => {:action =>:create, :controller => :images}) do |f|%>
