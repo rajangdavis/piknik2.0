@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   resources :users
     resources :streams, except: [:edit]
-    get 'streams/:id/this_is_not_an_edit_page' => "streams#edit", as: :edit_stream
+    get 'streams/:id/edit' => "streams#edit", as: :edit_stream
     get 'logout', to: 'sessions#destroy', as: 'logout'
-  
+    resources :images
     resources :sessions
 
 

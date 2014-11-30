@@ -1,17 +1,16 @@
-<h1>Users#show</h1>
+<%= form_for(@stream,{method: :create}) do |f| %>
+	<%= f.text_field :name, :placeholder => "Stream Name"%>
+	<%= f.hidden_field :user_id, :value => current_user.id%>
+	<%= f.submit "Create Stream"%>
+<% end %>
 
 <% unless @streams.blank? %>
 	<% @streams.each do |stream|%>
 		<% if stream.user_id == @user.id%>
-			<%= stream.stream %><br>
 			<%= stream.name %><br>
-			<%= stream.description %><br>
 			<%= link_to "edit", edit_stream_path(stream)%><br>
 		<% end %>
 	<% end %>	
 <% else %>
 	<p>you has none</p>
 <% end %>
-
-
-<%= link_to "Add a Stream", new_stream_path  %>

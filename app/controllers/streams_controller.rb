@@ -6,6 +6,8 @@ class StreamsController < ApplicationController
   end
   
   def edit
+    @image = Image.new
+    @images = Image.all
     @stream = Stream.find(params[:id])
   end
 
@@ -25,12 +27,13 @@ class StreamsController < ApplicationController
   end
 
   def create
+
     @user_id = current_user.id
-    @stream = Stream.new(params[:user_id])
+    @stream = Stream.new(stream_params)
     if @stream.save
       redirect_to edit_stream_path(@stream)
     else
-      render 'index'
+      redirect_to :back
     end
   end
 
@@ -38,6 +41,7 @@ class StreamsController < ApplicationController
     @stream = Stream.find(params[:id])
     @stream.destroy
   end
+  
   
   private
 
