@@ -1,0 +1,37 @@
+<%= form_for(@bubble) do |f| %>
+
+<div class="left_indent_container">
+
+
+  <div class="create_new_bubble_container">
+
+    <table>
+      <tr class="new_bubble_top_line_container">
+        <%= f.text_field :title,:id => "title_field", :class => "create_new_bubble_field", :placeholder => "Add your posting title here"%>
+
+        <select class="new_bubble_pulldown" name="bubble[tag]">
+          <option value="" disabled selected>Add a category</option>
+          <option value="#rails">#rails</option>
+          <option value="#erb">#erb</option>
+          <option value="#ruby">#ruby</option>
+          <option value="#html">#html</option>
+          <option value="#css">#css</option>
+          <option value="#js">#js</option>
+          <option value="#angular">#angular</option>
+          <option value="#mongodb">#mongodb</option>
+          <option value="#firebase">#firebase</option>
+          <option value="#frontend">#frontend</option>
+          <option value="#backend">#backend</option>
+          <option value="#gossip">#gossip</option>
+        </select>
+      </tr>  
+      </table>  
+      <div> 
+        <%= f.text_area :body, :class => "create_new_bubble_field", :id => "body_field", :placeholder => "Add your posting body here"%>
+      </div>
+      <div class="actions">
+        <%= f.submit "Submit", :class => "submit_button" %>
+      </div>
+  </div>
+        <% end %>
+</div>
