@@ -25,7 +25,7 @@ module Api
 
 		def index
 			plural_resource_name = "@#{resource_name.pluralize}"
-			resources = resource_class.where(quer_params)
+			resources = resource_class.where(query_params)
 										.page(page_params[:page])
 										.per(page_params[:page_size])
 			instance_variable_set(plural_resource_name, resources)
@@ -49,10 +49,10 @@ module Api
 
 		private
 
-		# get_resource: provides us with what would normally be our instance variable; eg @users or @streams, and returning us with it’s value.
+		# get_resource: provides us with what would normally be our instance variable; eg @users or @streams, and returning us with its value.
 
 		def get_resource
-			instance_variable_get("@#{{resource_name}}")
+			instance_variable_get("@#{resource_name}")
 		end
 
 	 # Returns the allowed parameters for searching
@@ -81,7 +81,7 @@ module Api
 
     # The singular name for the resource class based on the controller
     # @return [String]
-    # resource_name: is just the name of the resource that we’re referring to same as resource_class but instead of the class User it is the string "user".
+    # resource_name: is just the name of the resource that we’re referring to; same as resource_class but instead of the class User it is the string "user".
 
 		def resource_name
 			@resource_name ||=self.controller_name.singularize

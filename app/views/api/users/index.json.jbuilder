@@ -1,5 +1,5 @@
 json.users @users do |user|
 	json.id   user.id
-	json.name  user.username
+	json.username  user.username
 
 end

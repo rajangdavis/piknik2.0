@@ -4,11 +4,11 @@ module Api
 		private
 
 			def user_params
-				params.require(:user).permit(:username, :password, :password_confirmation)
+				params.require(:user).permit(:username)
 			end
 
 			def query_params
-				params.permit(:stream_id, :username)
+				params.permit(:username)
 			end
 		end
 	end
