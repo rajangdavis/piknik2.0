@@ -3,16 +3,243 @@
     <div class="text-center bg-danger"><%= flash[:notice] %></div>
 <% end %>
 
-	
-<% @images.each do |image|%>
-	<% if image.stream_id == @stream.id%>
-		<%= image_tag image.image.url(:small) %>
-	<% end %>
-<% end%>
+<div class="uploadContainer">
+<form action="" method="post" enctype="multipart/form-data">
+    <div class="upload">
+        <input type="file" id="imgLoader" />
+
+    </div>
+</form>
+</div>
+
+ 
+<table id="streamsTable" class="container">
+
+  <tbody >
+ 
+  </tbody>
+</table>
+ 
+ 
+ 
+<script type="text/javascript">
 
 
-<%=form_for(@image, :url => {:action =>:create, :controller => :images}) do |f|%>
-	<%= f.file_field :image %>
-	<%= f.hidden_field :stream_id, :value => @stream.id%>
-	<%= f.submit "Add Image"%>
-<% end %>
+// var canvasX = new fabric.Canvas();
+
+// canvasX.loadFromJSON('{"objects":[{"type":"rect","left":50,"top":50,"width":20,"height":20,"fill":"green","overlayFill":null,"stroke":null,"strokeWidth":1,"strokeDashArray":null,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"selectable":true,"hasControls":true,"hasBorders":true,"hasRotatingPoint":false,"transparentCorners":true,"perPixelTargetFind":false,"rx":0,"ry":0},{"type":"circle","left":100,"top":100,"width":100,"height":100,"fill":"red","overlayFill":null,"stroke":null,"strokeWidth":1,"strokeDashArray":null,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"selectable":true,"hasControls":true,"hasBorders":true,"hasRotatingPoint":false,"transparentCorners":true,"perPixelTargetFind":false,"radius":50}],"background":"rgba(0, 0, 0, 0)"}');
+
+
+
+
+var image;
+
+$(document).ready(function() {
+    var counter = 1;
+
+
+    function loadImage() {
+        counter += 1;
+
+        /////////JQUERY ATTACH NEW HTML TO DOM
+
+
+
+        $('#streamsTable').find('tbody')
+
+        .append($('<div class="sort-cell">')
+            .append($("<canvas id='canvas" + counter + "' rel='"+counter+"'>"))
+            // .append($("<img src='grid.png' rel='"+counter+"' id='grid'>"))
+            .append($("<div rel='"+counter+"' class='scale'>"))
+            .append($("<div rel='"+counter+"' class='rotate'>"))
+            .append($("<div rel='"+counter+"' class='sort-handle' id='sort-handle" + counter + "'></div>"))
+            .append($("<div rel='"+counter+"' class='image-settings' id='image-settings" + counter + "'></div>"))
+        );
+
+
+
+        ///////FABRIC MAKE CANVAS AND IMAGE INSTANCE
+
+var canvas = new fabric.Canvas('canvas' + counter);
+  canvas.setHeight(640);
+  canvas.setWidth(640);
+  canvas.setBackgroundColor('black');
+
+
+////HIDE ROTATE AND SCALE
+
+$('.scale').hide();
+$('.rotate').hide();
+
+
+////LOAD IMAGE
+
+
+document.getElementById('imgLoader').onchange = function handleImage(e) {
+    var reader = new FileReader();
+    reader.onload = function (event) { console.log('fdsf');
+        var imgObj = new Image();
+        imgObj.src = event.target.result;
+        imgObj.onload = function () {
+            // start fabricJS stuff
+            
+            image = new fabric.Image(imgObj);
+            image.set({
+              left: 320,
+              top: 320,
+            originX: 'center',
+            originY: 'center',
+            hasBorders : false,
+            hasControls : false,
+            hasRotatingPoint : false,
+
+            });
+
+
+            canvas.add(image);
+            canvas.setActiveObject(image);
+
+            // image.lockMovementX = true;
+            // image.lockMovementY = true;
+
+            
+            // var gridElement = document.getElementById('.grid');
+            // var gridInstance = new fabric.Image(gridElement, {
+            // left: 0,
+            //   top: 0,
+            // });
+            // canvas.add(gridInstance );
+
+            
+            // end fabricJS stuff
+        }
+        
+    }
+    reader.readAsDataURL(e.target.files[0]);
+}
+
+
+
+
+        canvas.calcOffset();
+
+
+        $('.scale[rel='+counter+']').slider({
+            animate: "fast",
+            orientation: "vertical",
+            min: 700,
+            max: 1000,
+            step: 1,
+            value: 800,
+            slide: function(event, ui) {
+                var activeObject = canvas.getActiveObject();
+                if (activeObject) {
+                    activeObject.height = ui.value;
+                    activeObject.width = ui.value;
+                    activeObject.setCoords();
+                    canvas.renderAll();
+
+
+                    localStorage.setItem("Canvas Data",(JSON.stringify(canvas)));
+                    
+                    // console.log(JSON.stringify(canvas));
+                    console.log(JSON.stringify(canvas.toDatalessJSON()));
+                    
+                }
+            }
+
+        });
+
+        $('.rotate[rel='+counter+']').slider({
+            orientation: "vertical",
+            animate: "fast",
+            min: -30,
+            max: 30,
+            step: 1,
+            value: 0,
+            slide: function(event, ui) {
+                var activeObject = canvas.getActiveObject();
+                if (activeObject) {
+                    activeObject.angle = ui.value;
+                    activeObject.setCoords();
+                    canvas.renderAll();
+
+                }
+            }
+        });
+
+    
+  $('.image-settings[rel='+counter+']').click(function() {
+    $('.scale').toggle();
+    $('.rotate').toggle();
+    $('.sort-handle').toggle();
+    // lockImages();
+    // $('#canvas [rel='+counter+']').image.lockMovementX = true;
+    // image.lockMovementX = false;
+    // image.lockMovementY = false;
+
+
+  });
+
+
+
+
+};
+
+ 
+
+
+    //////SORTABLE/////
+
+    $("table tbody").sortable({
+        handle: '.sort-handle',
+        cancel: '',
+        axis: 'y',
+        placeholder: "placeholderX"
+
+    }).disableSelection();
+
+  //   function hideButtons(){
+
+  //     $('.scale[rel='+counter+']').hide( "fast", function() {
+  //   alert( "Animation complete." )
+  //   });
+
+  //      $('.rotate[rel='+counter+']').hide( "fast", function() {
+  //   alert( "Animation complete." )
+  //   });
+
+  // };
+
+
+
+
+
+
+    // $('.image-settings').click(hideButtons);
+
+
+    $('#imgLoader').click(loadImage);
+
+
+  
+
+});
+
+////FUNCTION FOR SAVING A CANVAS TO JPG
+
+// var imageSaver = document.getElementById('imageSaver');
+// imageSaver.addEventListener('click', saveImage, false);
+
+// function saveImage(e) {
+//     this.href = canvas.to   DataURL({
+//         format: 'jpeg',
+//         quality: 0.8
+//     });
+//     this.download = 'test.png'
+// }
+
+
+
+
+</script>
