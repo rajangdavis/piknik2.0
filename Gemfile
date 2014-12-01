@@ -9,6 +9,7 @@ gem 'factory_girl_rails'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'shoulda-matchers', require: false
+  gem 'capybara'
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
