@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
-
-  resources :users
-    resources :streams, except: [:edit]
-    get 'streams/:id/edit' => "streams#edit", as: :edit_stream
+  
+    resources :streams, only: [:new,:create,:update, :index, :show]
+    resources :users
+    get 'streams/:id/this_is_not_an_edit_page' => "streams#edit", as: :edit_stream
+    delete 'streams/:stream' => "streams#destroy", as: :delete_stream
     get 'logout', to: 'sessions#destroy', as: 'logout'
-    resources :images
     resources :sessions
-
-
-  root 'sessions#new'
+    root 'sessions#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
