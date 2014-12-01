@@ -241,7 +241,18 @@ gif.on('finished', function(blob) {
   	
 	
 
-$('#gifHolder').append('<img src="'+URL.createObjectURL(blob)+'">')
+$('#gifHolder').append('<img src="'+URL.createObjectURL(blob)+'">');
+
+
+$.ajax({
+  type: "POST",
+  url: "api/streams/<%= @stream.id %>",
+  data: gif,
+  success: console.log('success'),
+  dataType: blob
+});
+
+
 	});
 
 	gif.render();
