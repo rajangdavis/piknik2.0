@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # gem 'aws-sdk'
 gem 'rails_12factor', group: :development
- gem 'paperclip'
+ # gem 'paperclip'
 
 gem 'factory_girl_rails'
 
