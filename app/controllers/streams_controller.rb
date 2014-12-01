@@ -47,6 +47,6 @@ class StreamsController < ApplicationController
   private
 
   def stream_params
-    params.require(:stream).permit(:user_id, :name)
+    params.require(:stream).permit(:user_id, :name, :gif)
   end
 end

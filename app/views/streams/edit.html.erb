@@ -21,7 +21,7 @@
  
   </tbody>
 </table>
- 
+
  
  
 <script type="text/javascript">
@@ -239,18 +239,29 @@ console.log('this is being accessed')
 
 gif.on('finished', function(blob) {
   	
-	
+	var finishedProduct = URL.createObjectURL(blob);
 
-$('#gifHolder').append('<img src="'+URL.createObjectURL(blob)+'">');
+var blobAsDataUrl;
+var xhr = new XMLHttpRequest;
+xhr.responseType = 'blob';
 
+xhr.onload = function() {
+   var recoveredBlob = xhr.response;
 
-$.ajax({
-  type: "POST",
-  url: "api/streams/<%= @stream.id %>",
-  data: gif,
-  success: console.log('success'),
-  dataType: blob
-});
+   var reader = new FileReader;
+
+   reader.onload = function() {
+     blobAsDataUrl = reader.result;
+     $('#gifHolder').append('<img src="'+blobAsDataUrl+'">');
+   };
+
+   reader.readAsDataURL(recoveredBlob);
+};
+
+xhr.open('GET', finishedProduct);
+xhr.send();
+    // xhr.open('PUT', "/streams/<%= @stream.id%>/");
+    // xhr.send('{"gif":"22"}');
 
 
 	});
