@@ -1,0 +1,566 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+/* line 18, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+::-webkit-input-placeholder {
+  color: #4e92ac;
+}
+
+/* line 22, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #4e92ac;
+}
+
+/* line 26, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #4e92ac;
+}
+
+/* line 30, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+:-ms-input-placeholder {
+  color: #4e92ac;
+}
+
+/* line 34, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+*:focus {
+  outline: 0;
+  padding: 0 !important;
+}
+
+/*body{
+	background: #d6c136;
+	width: 100%;
+	height: 100%;
+}*/
+/* line 45, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+#page_container {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/hp_bg.jpg");
+  background-color: black;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* line 58, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+#container {
+  margin-left: 30%;
+  width: 40%;
+  position: absolute;
+  top: 30%;
+  z-index: 100;
+}
+
+/* line 68, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+#home_logo {
+  width: 100%;
+  height: 150px;
+  background-image: url("/assets/piknik_logo.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 70%;
+  z-index: 200;
+}
+
+/* line 78, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+#signup_button {
+  height: 80px;
+  background-image: url("/assets/piknik_signup.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 40%;
+  transition: all .3s ease-in-out;
+  z-index: -100;
+  cursor: pointer;
+}
+
+/* line 93, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+#signup_button:hover {
+  transform: scale(1.2, 1.2);
+  transition: all .3s ease-in-out;
+}
+
+/* line 97, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+#signup_button:active {
+  transform: scale(1, 1);
+  transition: all .1s ease-in-out;
+}
+
+/* line 102, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+#login_button {
+  height: 80px;
+  margin-top: 20px;
+  background-image: url("/assets/piknik_login.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 30%;
+  transition: all .3s ease-in-out;
+  z-index: -100;
+  cursor: pointer;
+}
+
+/* line 117, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+#login_button:hover {
+  transform: scale(1.2, 1.2);
+  transition: all .3s ease-in-out;
+}
+
+/* line 121, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+#login_button:active {
+  transform: scale(1, 1);
+  transition: all .1s ease-in-out;
+}
+
+/* line 127, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.blue_cover {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0%;
+  height: 0%;
+  background-color: #75c2e0;
+  z-index: 50;
+  transition: all .5s ease-in-out;
+  opacity: 0;
+  border-radius: 300px;
+}
+
+/* line 143, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+#tongue {
+  position: absolute;
+  z-index: -20;
+  width: 100%;
+  height: 0px;
+  background-image: url("/assets/tongue.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 50%;
+  transition: all .3s ease-in-out;
+  opacity: 0;
+}
+
+/* line 157, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.input_field {
+  width: 150px;
+  height: 30px;
+  background-color: #a5d9ed;
+  border-radius: 90px;
+  margin-bottom: 10px;
+  padding: 0px;
+  border: 0px;
+  text-align: center;
+  color: #29444e;
+  transition: all .3s ease-in-out;
+}
+
+/* line 170, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.submit_button {
+  width: 150px;
+  height: 30px;
+  background-color: yellow;
+  border-radius: 90px;
+  margin-bottom: 10px;
+  padding: 0px;
+  border: 0px solid #66aac5;
+  cursor: pointer;
+  color: #6e631c;
+  background: #ffe223;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #ffe223 0%, #d6c136 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffe223), color-stop(100%, #d6c136));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #ffe223 0%, #d6c136 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #ffe223 0%, #d6c136 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #ffe223 0%, #d6c136 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #ffe223 0%, #d6c136 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe223', endColorstr='#d6c136',GradientType=0 );
+  /* IE6-9 */
+}
+
+/* line 192, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.submit_button:hover {
+  border: 1px solid #467688;
+  border-image-outset: 1px;
+}
+
+/* line 197, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+#signup_form {
+  left: 215px;
+  top: -40px;
+  position: absolute;
+  width: 100px;
+  text-align: center;
+  border-radius: 90px;
+  transition: all .3s ease-in-out;
+}
+
+/* line 208, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+#login_form {
+  left: 215px;
+  top: -30px;
+  position: absolute;
+  width: 100px;
+  text-align: center;
+  border-radius: 90px;
+  transition: all .3s ease-in-out;
+}
+
+/* line 219, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.close_signup_button {
+  color: #29444e;
+  opacity: .5;
+  cursor: pointer;
+  font-family: sans-serif;
+  font-size: 12px;
+  margin-left: 46px;
+}
+
+/* line 228, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.close_login_button {
+  color: #29444e;
+  opacity: .5;
+  cursor: pointer;
+  font-family: sans-serif;
+  font-size: 12px;
+  margin-left: 46px;
+}
+
+/* line 237, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.close_signup_button:hover {
+  color: black;
+}
+
+/* line 241, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.close_login_button:hover {
+  color: black;
+}
+
+/* line 248, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+*:focus {
+  outline: 0;
+  padding: 0 !important;
+}
+
+/* line 253, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+body {
+  background: #212121;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 259, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+input {
+  background: #212121 !important;
+  color: #212121 !important;
+}
+
+/*#grid{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+
+
+}*/
+/* line 276, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.scale {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  height: 480px;
+  width: 60px;
+  border-radius: 60px;
+  border: 0px;
+  background: rgba(255, 255, 255, 0.4);
+  /*	visibility: hidden;*/
+}
+
+/* line 289, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.rotate {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  height: 480px;
+  width: 60px;
+  border-radius: 60px;
+  border: 0px;
+  background: rgba(255, 255, 255, 0.4);
+  /*	visibility: hidden;*/
+}
+
+/* line 303, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.ui-slider .ui-slider-handle {
+  background: white;
+  left: 0px;
+  width: 60px;
+  height: 60px;
+  border-radius: 90px;
+  text-align: center;
+  cursor: ns-resize;
+  border: 0px;
+}
+
+/* line 315, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.ui-slider.scale .ui-slider-handle:before {
+  content: "\f065";
+  font-size: 30px;
+  line-height: 60px;
+  font-family: FontAwesome;
+  color: #b7b7b7;
+  cursor: ns-resize;
+}
+
+/* line 325, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.ui-slider.rotate .ui-slider-handle:before {
+  content: "\f01e";
+  font-size: 30px;
+  line-height: 60px;
+  font-family: FontAwesome;
+  color: #b7b7b7;
+  cursor: ns-resize;
+}
+
+/* line 336, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.sort-handle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 0;
+  position: absolute;
+  cursor: ns-resize;
+  color: #b7b7b7;
+  background-color: #d6d6d6 !important;
+  z-index: 100;
+  vertical-align: bottom;
+  right: 40px;
+  bottom: 40px;
+  display: inline-block;
+}
+
+/* line 354, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.sort-handle:hover {
+  background-color: red;
+  color: black;
+  background-color: #a5a5a5 !important;
+}
+
+/* line 362, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.sort-handle:active {
+  background-color: red !important;
+  color: black;
+}
+
+/* line 369, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.sort-handle:before {
+  content: "\f0dc";
+  font-size: 30px;
+  line-height: 60px;
+  font-family: FontAwesome;
+  color: #b7b7b7;
+  cursor: ns-resize;
+}
+
+/* line 381, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.image-settings {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  border: 0;
+  position: absolute;
+  cursor: move;
+  color: #b7b7b7;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 100;
+  vertical-align: bottom;
+  left: 40px;
+  bottom: 40px;
+  display: inline-block;
+}
+
+/* line 398, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.image-settings:hover {
+  background-color: red;
+  color: black;
+  background-color: #a5a5a5 !important;
+}
+
+/* line 404, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.image-settings:before {
+  content: "\f1de";
+  font-size: 30px;
+  line-height: 60px;
+  font-family: FontAwesome;
+  color: #b7b7b7;
+  cursor: ns-resize;
+}
+
+/* line 414, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+#save {
+  width: 150px;
+  height: 60px;
+  border-radius: 30px;
+  border: 0;
+  position: absolute;
+  cursor: move;
+  color: #b7b7b7;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 100;
+  vertical-align: bottom;
+  left: 40px;
+  bottom: 40px;
+  display: inline-block;
+  visibility: hidden;
+  font-size: 30px;
+}
+
+/* line 435, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.placeholderX {
+  height: 640px;
+  background-color: black;
+}
+
+/* line 442, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.sort-cell {
+  text-align: center;
+  height: 640px !important;
+  width: 640px !important;
+  position: relative;
+  vertical-align: top !important;
+}
+
+/* line 450, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  border-spacing: 0px;
+}
+
+/* line 458, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.streamCanvas {
+  left: -1px !important;
+  border: 0px;
+  background-color: red;
+}
+
+/* line 464, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+#streamsTable {
+  border-spacing: 0px !important;
+}
+
+/* line 468, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+tr {
+  background: #f1f1f1;
+  width: 640px;
+}
+
+/* line 475, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+input {
+  background-color: #ccc;
+  /*	padding: 10px 20px;*/
+  width: 640px;
+  /*	color: #777;*/
+}
+
+/*a{
+	color: #777;
+	display: block;
+	background-color: #ccc; 
+	width: 360px;
+	padding: 10px 20px;
+	margin-top: 2px;
+	text-decoration:none;
+}*/
+/*div.upload {
+    width: 640px;
+    height: 60px;
+    overflow: hidden;
+    background-color: #dc491c;
+    border-radius: 50px;
+}
+
+
+div.upload input {
+    display: block !important;
+    width: 640px !important;
+    height: 60px !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+}*/
+/* line 509, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+#imgLoader::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+/* line 513, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+#imgLoader::before {
+  content: 'Add an image';
+  color: white;
+  display: inline-block;
+  background: #dc491c;
+  border-radius: 90px;
+  height: 60px;
+  width: 640px;
+  text-align: center;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-family: arial;
+  line-height: 60px;
+  font-size: 18pt;
+}
+
+/* line 530, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+#imgLoader:hover::before {
+  border-color: black;
+  background: #fd4912;
+}
+
+/* line 534, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+#imgLoader:active::before {
+  border-color: black;
+  background: #fd4912;
+}
+
+/* line 539, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.uploadContainer {
+  width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  line-height: 80px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 30px;
+}
+
+/* line 551, /Users/rajandavis/Desktop/piknik2.0/app/assets/stylesheets/application.css.scss */
+.spacer {
+  height: 20px;
+  width: 640px;
+  background: black;
+  opacity: 0;
+}
