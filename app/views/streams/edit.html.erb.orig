@@ -1,4 +1,11 @@
+<<<<<<< HEAD
+<h1><%= @stream.name %></h1>
+=======
 
+<% if flash[:notice] %><br><br>
+    <div class="text-center bg-danger"><%= flash[:notice] %></div>
+<% end %>
+>>>>>>> master
 
 
 
@@ -25,12 +32,20 @@
 
 </div>
 
+</div>
+</div>
+
+
+<<<<<<< HEAD
 <div id="gifHolder">
   <%= form_for(@stream) do |f| %>
     <%= f.hidden_field :url, :id => "gifField" %>
     <%= f.submit "Save Gif"%>
   <% end %>
 </div>
+=======
+<div id="streamName"><%= @stream.name %> </div> 
+>>>>>>> master
  
 <table id="streamsTable" class="container">
 
@@ -39,9 +54,12 @@
   </tbody>
 </table>
 
+<<<<<<< HEAD
+=======
 		<div id="gifHolder"></div>
 
 
+>>>>>>> master
  
  
 <script type="text/javascript">
@@ -272,6 +290,7 @@ console.log('this is being accessed')
 
 gif.on('finished', function(blob) {
   	
+<<<<<<< HEAD
 	var finishedProduct = URL.createObjectURL(blob);
 
 var blobAsDataUrl;
@@ -322,15 +341,21 @@ xhr.send();
     
 
   
+
+=======
+	
 // $('#gifHolder').remove();	
 
+$('#gifHolder').append('<img src="'+URL.createObjectURL(blob)+'">');
 // $('#gifHolder').append("<div class='pauseButton'></div>");
 	// });
+>>>>>>> master
 	});
 
 
-
 	gif.render();
+
+
 
 
 	
