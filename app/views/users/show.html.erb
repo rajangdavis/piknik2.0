@@ -8,7 +8,10 @@
 	<% @streams.each do |stream|%>
 		<% if stream.user_id == @user.id%>
 			<%= stream.name %><br>
-			<%= link_to "edit", edit_stream_path(stream)%><br>
+			<a href="<%=stream.url%>" target="_blank"><img src="<%=stream.url%>"></a><br>
+			<% if stream.user_id == current_user.id%>
+				<%= button_to "Delete", delete_stream_path(:stream => stream.id), method: :delete%><br>
+			<% end %>
 		<% end %>
 	<% end %>	
 <% else %>
