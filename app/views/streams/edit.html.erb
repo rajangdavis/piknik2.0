@@ -1,4 +1,6 @@
-
+<% if flash[:notice] %><br><br>
+    <div class="text-center bg-danger"><%= flash[:notice] %></div>
+<% end %>
 
 
 
@@ -6,31 +8,30 @@
 
 <div id="header">
 <span id="user_header">
-		<% if current_user %>
-		  <%= link_to "log out", logout_path %> | <%= link_to "my streams", user_path(current_user) %>
-		
-		<% end %>
+    <% if current_user %>
+      <%= link_to "log out", logout_path %> | <%= link_to "my streams", user_path(current_user) %>
+    
+    <% end %>
 </span>
  <div class="uploadContainer">
- 		
-	<form id='imageForm' action="" method="post" enctype="multipart/form-data">
-	    <div class="upload">
-	        <input type="file" id="imgLoader" />
-	        	<div id="makeGif">animate stream</div>
-	           </div>
-	</form>
+    
+  <form id='imageForm' action="" method="post" enctype="multipart/form-data">
+      <div class="upload">
+          <input type="file" id="imgLoader" />
+            <div id="makeGif">animate stream</div>
+             </div>
+  </form>
 
 
 
 
 </div>
 
-<div id="gifHolder">
-  <%= form_for(@stream) do |f| %>
-    <%= f.hidden_field :url, :id => "gifField" %>
-    <%= f.submit "Save Gif"%>
-  <% end %>
 </div>
+</div>
+
+
+<div id="streamName"><%= @stream.name %> </div> 
  
 <table id="streamsTable" class="container">
 
@@ -39,60 +40,40 @@
   </tbody>
 </table>
 
-		<div id="gifHolder"></div>
-
+    <div id="gifHolder">
+  <%= form_for(@stream) do |f| %>
+    <%= f.hidden_field :url, :id => "gifField" %>
+    <%= f.submit "Save Gif"%>
+  <% end %>
+</div>
 
  
  
 <script type="text/javascript">
-
-
 var image;
-
 $(document).ready(function() {
     var counter = 0;
-
-
     function loadImage() {
         counter += 1;
-
         /////////JQUERY ATTACH NEW HTML TO DOM
-
-
-
         $('#streamsTable').find('tbody')
-
-        .append($('<div class="sort-cell" rel="cell'+counter+'">')
+        .append($('<div class="sort-cell">')
             .append($("<canvas id='canvas" + counter + "' rel='"+counter+"' name='fabric'></canvas>"))
             // .append($("<img src='grid.png' rel='"+counter+"' id='grid'>"))
             .append($("<div rel='"+counter+"' class='scale' id='scale" + counter + "'></div>"))
             .append($("<div rel='"+counter+"' class='rotate' id='scale" + counter + "'></div>"))
-            .append($("<div rel='"+counter+"' class='delete' id='delete" + counter + "'></div>"))
             .append($("<div rel='"+counter+"' class='sort-handle' id='sort-handle" + counter + "'></div>"))
             .append($("<div rel='"+counter+"' class='image-settings' id='image-settings" + counter + "'></div>"))
         );
-
-
-
         ///////FABRIC MAKE CANVAS AND IMAGE INSTANCE
-
 var canvas = new fabric.Canvas('canvas' + counter);
   canvas.setHeight(640);
   canvas.setWidth(640);
   canvas.setBackgroundColor('black');
-
-
 ////HIDE ROTATE AND SCALE
-
 $('.scale').hide();
 $('.rotate').hide();
-$('.delete').hide();
-
-
-
 ////LOAD IMAGE
-
-
 document.getElementById('imgLoader').onchange = function handleImage(e) {
     var reader = new FileReader();
     reader.onload = function (event) { console.log('fdsf');
@@ -110,17 +91,11 @@ document.getElementById('imgLoader').onchange = function handleImage(e) {
             hasBorders : false,
             hasControls : false,
             hasRotatingPoint : false,
-
             });
-
-
             canvas.add(image);
             canvas.setActiveObject(image);
-            $("html, body").animate({ scrollTop: $(document).height() }, 4000);
-
             // image.lockMovementX = true;
             // image.lockMovementY = true;
-
             
             // var gridElement = document.getElementById('.grid');
             // var gridInstance = new fabric.Image(gridElement, {
@@ -128,7 +103,6 @@ document.getElementById('imgLoader').onchange = function handleImage(e) {
             //   top: 0,
             // });
             // canvas.add(gridInstance );
-
             
             // end fabricJS stuff
         }
@@ -136,13 +110,7 @@ document.getElementById('imgLoader').onchange = function handleImage(e) {
     }
     reader.readAsDataURL(e.target.files[0]);
 }
-
-
-
-
         canvas.calcOffset();
-
-
         $('.scale[rel='+counter+']').slider({
             animate: "fast",
             orientation: "vertical",
@@ -157,8 +125,6 @@ document.getElementById('imgLoader').onchange = function handleImage(e) {
                     activeObject.width = ui.value;
                     activeObject.setCoords();
                     canvas.renderAll();
-
-
                     localStorage.setItem("Canvas Data",(JSON.stringify(canvas)));
                     
                     // console.log(JSON.stringify(canvas));
@@ -166,13 +132,7 @@ document.getElementById('imgLoader').onchange = function handleImage(e) {
                     
                 }
             }
-
         });
-
-
-
-
-
         $('.rotate[rel='+counter+']').slider({
             orientation: "vertical",
             animate: "fast",
@@ -186,103 +146,61 @@ document.getElementById('imgLoader').onchange = function handleImage(e) {
                     activeObject.angle = ui.value;
                     activeObject.setCoords();
                     canvas.renderAll();
-
                 }
             }
         });
-
     
   $('.image-settings[rel='+counter+']').click(function() {
     $('.scale').toggle();
     $('.rotate').toggle();
     $('.sort-handle').toggle();
-    $('.delete').toggle();
-    
     // lockImages();
     // $('#canvas [rel='+counter+']').image.lockMovementX = true;
     // image.lockMovementX = false;
     // image.lockMovementY = false;
-
-
   });
-
-  $('.delete[rel='+counter+']').click(function() {
-
-  	$( this.parentNode).remove();
-
-
-  });
-
-
-
-
 };
-
  
-
-
     //////SORTABLE/////
-
     $("table tbody").sortable({
         handle: '.sort-handle',
         cancel: '',
         axis: 'y',
         placeholder: "placeholderX"
-
     }).disableSelection();
-
   //   function hideButtons(){
-
   //     $('.scale[rel='+counter+']').hide( "fast", function() {
   //   alert( "Animation complete." )
   //   });
-
   //      $('.rotate[rel='+counter+']').hide( "fast", function() {
   //   alert( "Animation complete." )
   //   });
-
   // };
-
-
-
-
-
-
     // $('.image-settings').click(hideButtons);
-
-
     $('#imgLoader').click(loadImage);
-
-
 $('#makeGif').click(function() {
 console.log('this is being accessed')
-	imageCanvas = document.getElementsByName('fabric');
-	var gif = new GIF({
-  		workers: 4,
-  		quality: 15,
-  		width: 640,
-  		height: 640
-	});
-	
-
-	for (var i = 0; i <imageCanvas.length; i++) {
-		ctx = imageCanvas[i].getContext('2d');
-		gif.addFrame(ctx, {copy: true, delay: 320});
-	};
-
+  imageCanvas = document.getElementsByName('fabric');
+  var gif = new GIF({
+      workers: 4,
+      quality: 15,
+      width: 640,
+      height: 640
+  });
+  
+  for (var i = 0; i <imageCanvas.length; i++) {
+    ctx = imageCanvas[i].getContext('2d');
+    gif.addFrame(ctx, {copy: true, delay: 100});
+  };
 gif.on('finished', function(blob) {
-  	
-	var finishedProduct = URL.createObjectURL(blob);
-
+    
+  var finishedProduct = URL.createObjectURL(blob);
 var blobAsDataUrl;
 var xhr = new XMLHttpRequest;
 xhr.responseType = 'blob';
-
 xhr.onload = function() {
    var recoveredBlob = xhr.response;
-
    var reader = new FileReader;
-
    reader.onload = function() {
      blobAsDataUrl = reader.result;
      var finalURL = blobAsDataUrl.replace('data:image/gif;base64,','');
@@ -313,38 +231,20 @@ xhr.onload = function() {
     }
 });
    };
-
    reader.readAsDataURL(recoveredBlob);
 };
-
 xhr.open('GET', finishedProduct);
 xhr.send();
     
-
   
-// $('#gifHolder').remove();	
-
-// $('#gifHolder').append("<div class='pauseButton'></div>");
-	// });
-	});
-
-
-
-	gif.render();
-
-
-	
-$("html, body").animate({ scrollTop: $(document).height() }, 1000);
-
-
+  });
+  gif.render();
+  
 });
 });
-
 ////FUNCTION FOR SAVING A CANVAS TO JPG
-
 // var imageSaver = document.getElementById('imageSaver');
 // imageSaver.addEventListener('click', saveImage, false);
-
 // function saveImage(e) {
 //     this.href = canvas.to   DataURL({
 //         format: 'jpeg',
@@ -352,7 +252,4 @@ $("html, body").animate({ scrollTop: $(document).height() }, 1000);
 //     });
 //     this.download = 'test.png'
 // }
-
-
-
 </script>
