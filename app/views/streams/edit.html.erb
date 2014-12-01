@@ -3,23 +3,29 @@
     <div class="text-center bg-danger"><%= flash[:notice] %></div>
 <% end %>
 
-
+<div id="bg_top">
 
 <div id="floating-header">
 
+
 <div id="header">
+<div id="logo_small"></div>
+
 <span id="user_header">
 		<% if current_user %>
-		  <%= link_to "log out", logout_path %> | <%= link_to "my streams", user_path(current_user) %>
+		  <%= link_to "log out", logout_path %><%= link_to "my streams", user_path(current_user) %>
 		
 		<% end %>
 </span>
+
+
+
  <div class="uploadContainer">
  		
 	<form id='imageForm' action="" method="post" enctype="multipart/form-data">
 	    <div class="upload">
 	        <input type="file" id="imgLoader" />
-	        	<div id="makeGif">animate stream</div>
+	        	<div id="makeGif">animate</div>
 	           </div>
 	</form>
 
@@ -30,7 +36,13 @@
 
 </div>
 </div>
-
+<div id="gifHolder">
+	<img src="" class="gifClass" />
+	<div id="smallStreamName">
+		<%= @stream.name %>
+	</div>
+	<div id="deleteGif"></div>
+</div>
 
 <div id="streamName"><%= @stream.name %> </div> 
  
@@ -41,14 +53,15 @@
   </tbody>
 </table>
 
-		<div id="gifHolder"></div>
+		
 
 
  
- 
+</div>
+
 <script type="text/javascript">
 
-
+$('#gifHolder').hide();
 var image;
 
 $(document).ready(function() {
@@ -79,8 +92,8 @@ $(document).ready(function() {
         ///////FABRIC MAKE CANVAS AND IMAGE INSTANCE
 
 var canvas = new fabric.Canvas('canvas' + counter);
-  canvas.setHeight(640);
-  canvas.setWidth(640);
+  canvas.setHeight(420);
+  canvas.setWidth(420);
   canvas.setBackgroundColor('black');
 
 
@@ -89,6 +102,7 @@ var canvas = new fabric.Canvas('canvas' + counter);
 $('.scale').hide();
 $('.rotate').hide();
 $('.delete').hide();
+
 
 
 
@@ -105,8 +119,8 @@ document.getElementById('imgLoader').onchange = function handleImage(e) {
             
             image = new fabric.Image(imgObj);
             image.set({
-              left: 320,
-              top: 320,
+              left: 210,
+              top: 210,
             originX: 'center',
             originY: 'center',
             hasBorders : false,
@@ -115,33 +129,21 @@ document.getElementById('imgLoader').onchange = function handleImage(e) {
 
             });
 
-
+            canvas.calcOffset();
             canvas.add(image);
             canvas.setActiveObject(image);
-            $("html, body").animate({ scrollTop: $(document).height() }, 4000);
+            $("#streamsTable").css("background-color", "black");
 
-            // image.lockMovementX = true;
-            // image.lockMovementY = true;
-
-            
-            // var gridElement = document.getElementById('.grid');
-            // var gridInstance = new fabric.Image(gridElement, {
-            // left: 0,
-            //   top: 0,
-            // });
-            // canvas.add(gridInstance );
-
-            
-            // end fabricJS stuff
         }
         
     }
     reader.readAsDataURL(e.target.files[0]);
+                // $("html, body").animate({ scrollTop: $(document).height() }, 2000);
 }
 
 
 
-
+		
         canvas.calcOffset();
 
 
@@ -165,7 +167,7 @@ document.getElementById('imgLoader').onchange = function handleImage(e) {
                     
                     // console.log(JSON.stringify(canvas));
                     console.log(JSON.stringify(canvas.toDatalessJSON()));
-                    
+                    canvas.calcOffset();
                 }
             }
 
@@ -188,7 +190,7 @@ document.getElementById('imgLoader').onchange = function handleImage(e) {
                     activeObject.angle = ui.value;
                     activeObject.setCoords();
                     canvas.renderAll();
-
+                    canvas.calcOffset();
                 }
             }
         });
@@ -199,7 +201,7 @@ document.getElementById('imgLoader').onchange = function handleImage(e) {
     $('.rotate').toggle();
     $('.sort-handle').toggle();
     $('.delete').toggle();
-    
+    canvas.calcOffset();
     // lockImages();
     // $('#canvas [rel='+counter+']').image.lockMovementX = true;
     // image.lockMovementX = false;
@@ -212,7 +214,7 @@ document.getElementById('imgLoader').onchange = function handleImage(e) {
 
   	$( this.parentNode).remove();
 
-
+canvas.calcOffset();
   });
 
 
@@ -228,7 +230,7 @@ document.getElementById('imgLoader').onchange = function handleImage(e) {
     $("table tbody").sortable({
         handle: '.sort-handle',
         cancel: '',
-        axis: 'y',
+        // axis: 'y',
         placeholder: "placeholderX"
 
     }).disableSelection();
@@ -262,8 +264,8 @@ console.log('this is being accessed')
 	var gif = new GIF({
   		workers: 4,
   		quality: 15,
-  		width: 640,
-  		height: 640
+  		width: 420,
+  		height: 420
 	});
 	
 
@@ -275,9 +277,13 @@ console.log('this is being accessed')
 gif.on('finished', function(blob) {
   	
 	
-// $('#gifHolder').remove();	
+$('#gifHolder').show();	
 
-$('#gifHolder').append('<img src="'+URL.createObjectURL(blob)+'">');
+$('.gifClass').replaceWith('<img src="'+URL.createObjectURL(blob)+'" class="gifClass">');
+
+// $('#gifHolder').append('<img src="'+URL.createObjectURL(blob)+'" class="gifClass">');
+
+
 // $('#gifHolder').append("<div class='pauseButton'></div>");
 	// });
 	});
@@ -287,7 +293,7 @@ $('#gifHolder').append('<img src="'+URL.createObjectURL(blob)+'">');
 
 
 	
-$("html, body").animate({ scrollTop: $(document).height() }, 1000);
+window.scrollTo(0, 0);
 
 
 });
@@ -305,7 +311,11 @@ $("html, body").animate({ scrollTop: $(document).height() }, 1000);
 //     });
 //     this.download = 'test.png'
 // }
+$('#deleteGif').click(function() {
 
+	$('.gifClass').replaceWith('<img src="" class="gifClass">');
+	$('#gifHolder').hide();
+});
 
 
 </script>
