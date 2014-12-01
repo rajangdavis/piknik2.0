@@ -1,19 +1,38 @@
-<h1><%= @stream.name %></h1>
+
 <% if flash[:notice] %><br><br>
     <div class="text-center bg-danger"><%= flash[:notice] %></div>
 <% end %>
 
-<div class="uploadContainer">
-<form action="" method="post" enctype="multipart/form-data">
-    <div class="upload">
-        <input type="file" id="imgLoader" />
-        <a href="#" id="makeGif">make gif</a>
 
-    </div>
-</form>
+
+<div id="floating-header">
+
+<div id="header">
+<span id="user_header">
+		<% if current_user %>
+		  <%= link_to "log out", logout_path %> | <%= link_to "my streams", user_path(current_user) %>
+		
+		<% end %>
+</span>
+ <div class="uploadContainer">
+ 		
+	<form id='imageForm' action="" method="post" enctype="multipart/form-data">
+	    <div class="upload">
+	        <input type="file" id="imgLoader" />
+	        	<div id="makeGif">animate stream</div>
+	           </div>
+	</form>
+
+
+
+
 </div>
 
-<div id="gifHolder"></div>
+</div>
+</div>
+
+
+<div id="streamName"><%= @stream.name %> </div> 
  
 <table id="streamsTable" class="container">
 
@@ -21,7 +40,10 @@
  
   </tbody>
 </table>
- 
+
+		<div id="gifHolder"></div>
+
+
  
  
 <script type="text/javascript">
@@ -42,11 +64,12 @@ $(document).ready(function() {
 
         $('#streamsTable').find('tbody')
 
-        .append($('<div class="sort-cell">')
+        .append($('<div class="sort-cell" rel="cell'+counter+'">')
             .append($("<canvas id='canvas" + counter + "' rel='"+counter+"' name='fabric'></canvas>"))
             // .append($("<img src='grid.png' rel='"+counter+"' id='grid'>"))
             .append($("<div rel='"+counter+"' class='scale' id='scale" + counter + "'></div>"))
             .append($("<div rel='"+counter+"' class='rotate' id='scale" + counter + "'></div>"))
+            .append($("<div rel='"+counter+"' class='delete' id='delete" + counter + "'></div>"))
             .append($("<div rel='"+counter+"' class='sort-handle' id='sort-handle" + counter + "'></div>"))
             .append($("<div rel='"+counter+"' class='image-settings' id='image-settings" + counter + "'></div>"))
         );
@@ -65,6 +88,8 @@ var canvas = new fabric.Canvas('canvas' + counter);
 
 $('.scale').hide();
 $('.rotate').hide();
+$('.delete').hide();
+
 
 
 ////LOAD IMAGE
@@ -93,6 +118,7 @@ document.getElementById('imgLoader').onchange = function handleImage(e) {
 
             canvas.add(image);
             canvas.setActiveObject(image);
+            $("html, body").animate({ scrollTop: $(document).height() }, 4000);
 
             // image.lockMovementX = true;
             // image.lockMovementY = true;
@@ -172,10 +198,19 @@ document.getElementById('imgLoader').onchange = function handleImage(e) {
     $('.scale').toggle();
     $('.rotate').toggle();
     $('.sort-handle').toggle();
+    $('.delete').toggle();
+    
     // lockImages();
     // $('#canvas [rel='+counter+']').image.lockMovementX = true;
     // image.lockMovementX = false;
     // image.lockMovementY = false;
+
+
+  });
+
+  $('.delete[rel='+counter+']').click(function() {
+
+  	$( this.parentNode).remove();
 
 
   });
@@ -234,21 +269,25 @@ console.log('this is being accessed')
 
 	for (var i = 0; i <imageCanvas.length; i++) {
 		ctx = imageCanvas[i].getContext('2d');
-		gif.addFrame(ctx, {copy: true, delay: 100});
+		gif.addFrame(ctx, {copy: true, delay: 320});
 	};
 
 gif.on('finished', function(blob) {
   	
 	
+// $('#gifHolder').remove();	
 
-$('#gifHolder').append('<img src="'+URL.createObjectURL(blob)+'">')
+$('#gifHolder').append('<img src="'+URL.createObjectURL(blob)+'">');
+// $('#gifHolder').append("<div class='pauseButton'></div>");
+	// });
 	});
+
 
 	gif.render();
 
 
 	
-
+$("html, body").animate({ scrollTop: $(document).height() }, 1000);
 
 
 });
