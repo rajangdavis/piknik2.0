@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # gem 'aws-sdk'
-gem 'rails_12factor', group: :development
+gem 'rails_12factor'
  # gem 'paperclip'
 
 gem 'factory_girl_rails'
