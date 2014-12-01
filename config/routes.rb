@@ -3,11 +3,11 @@ Rails.application.routes.draw do
     resources :streams, except: [:edit]
     resources :users
   end
-    resources :streams, except: [:edit]
+    resources :streams, only: [:new,:create,:update, :index, :show]
     resources :users
     get 'streams/:id/this_is_not_an_edit_page' => "streams#edit", as: :edit_stream
+    delete 'streams/:stream' => "streams#destroy", as: :delete_stream
     get 'logout', to: 'sessions#destroy', as: 'logout'
-    resources :images
     resources :sessions
     root 'sessions#new'
 

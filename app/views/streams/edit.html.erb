@@ -1,7 +1,4 @@
 <h1><%= @stream.name %></h1>
-<% if flash[:notice] %><br><br>
-    <div class="text-center bg-danger"><%= flash[:notice] %></div>
-<% end %>
 
 <div class="uploadContainer">
 <form action="" method="post" enctype="multipart/form-data">
@@ -13,7 +10,12 @@
 </form>
 </div>
 
-<div id="gifHolder"></div>
+<div id="gifHolder">
+  <%= form_for(@stream) do |f| %>
+    <%= f.hidden_field :url, :id => "gifField" %>
+    <%= f.submit "Save Gif"%>
+  <% end %>
+</div>
  
 <table id="streamsTable" class="container">
 
@@ -266,12 +268,14 @@ xhr.onload = function() {
     dataType: 'json',
     success: function(response) {
         if(response.success) {
+          var gifField = document.getElementById('gifField');
           var gifHolder = document.getElementById('gifHolder');
           var aTag = document.createElement('a');
           var gif = document.createElement('img');
-          aTag.setAttribute('href',response.data.link);
+          aTag.setAttribute('href',response.data.link.replace("http:",""));
           aTag.setAttribute('target','_blank');
-          gif.setAttribute('src',response.data.link);
+          gif.setAttribute('src',response.data.link.replace("http:",""));
+          gifField.setAttribute('value',response.data.link.replace("http:",""));
           gifHolder.appendChild(aTag);
           aTag.appendChild(gif);  
         }
