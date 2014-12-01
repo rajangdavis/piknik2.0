@@ -13,6 +13,7 @@
 </form>
 </div>
 
+<div id="gifHolder"></div>
  
 <table id="streamsTable" class="container">
 
@@ -226,23 +227,27 @@ console.log('this is being accessed')
 	var gif = new GIF({
   		workers: 4,
   		quality: 15,
-  		width: 300,
-  		height: 300
+  		width: 640,
+  		height: 640
 	});
 	
 
 	for (var i = 0; i <imageCanvas.length; i++) {
 		ctx = imageCanvas[i].getContext('2d');
-		gif.addFrame(ctx, {copy: true});
+		gif.addFrame(ctx, {copy: true, delay: 100});
 	};
 
 gif.on('finished', function(blob) {
-  	window.open(URL.createObjectURL(blob));
+  	
+	
+
+$('#gifHolder').append('<img src="'+URL.createObjectURL(blob)+'">')
 	});
 
 	gif.render();
 
 
+	
 
 
 
