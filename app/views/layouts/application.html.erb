@@ -18,6 +18,11 @@
   <script src="/assets/gif.js"></script>
 
   <script src="/assets/gif.worker.js"></script>
+
+  <script src="//use.typekit.net/bni8evf.js"></script>
+  <script src="//use.typekit.net/dsa0urk.js"></script>
+  
+  <script>try{Typekit.load();}catch(e){}</script>
   
   <%= csrf_meta_tags %>
  
@@ -27,13 +32,7 @@
 	
 
 
-	<div id="user_header">
-		<% if current_user %>
-		  Logged in as <%= link_to current_user.username, user_path(current_user) %>.
-		  <%= link_to "Log Out", logout_path %>
-		
-		<% end %>
-	</div>
+
 
 
 <%= yield %>

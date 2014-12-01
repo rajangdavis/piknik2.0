@@ -8,8 +8,8 @@
         <div id="login_form">
           <%= form_for(@user,{url:sessions_path}) do |f| %>
           <%= f.text_field :username, :placeholder =>  "username", :class => "input_field" %>
-          <%= f.password_field :password, :placeholder => "Password", :class => "input_field"%>
-          <%= f.submit "Log in", :class => "submit_button", :id => "submit_login_button"%>
+          <%= f.password_field :password, :placeholder => "password", :class => "input_field"%>
+          <%= f.submit "submit", :class => "submit_button", :id => "submit_login_button"%>
           <% end %>
           <span class="close_login_button">cancel</span>
         </div>
@@ -17,10 +17,10 @@
 
         <div id="signup_form">
           <%= form_for(@user) do |f| %>
-            <%= f.text_field :username, :placeholder =>"Create Username", :class => "input_field" %>
-            <%= f.password_field :password, :placeholder =>"Create Password", :class => "input_field" %>
-            <%= f.password_field :password_confirmation, :placeholder =>"Password Confirmation" , :class => "input_field"%>
-            <%= f.submit "Sign up", :class => "submit_button", :id => "submit_signup_button"%>
+            <%= f.text_field :username, :placeholder =>"create username", :class => "input_field" %>
+            <%= f.password_field :password, :placeholder =>"create password", :class => "input_field" %>
+            <%= f.password_field :password_confirmation, :placeholder =>"confirm password" , :class => "input_field"%>
+            <%= f.submit "submit", :class => "submit_button", :id => "submit_signup_button"%>
           <% end %>
           <span class="close_signup_button">cancel</span>
         </div>
