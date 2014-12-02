@@ -8,18 +8,21 @@
 
 <span id="user_header">
     <% if current_user %>
-      <%= link_to "log out", logout_path %><%= link_to "my streams", user_path(current_user) %>
+      <span class="space"><%= link_to "log out", logout_path %></span><span class="space"><%= link_to "my streams", user_path(current_user) %></span>
     
     <% end %>
 </span>
 
 
-            <%= form_for(@stream) do |f| %>
+            
+
+ <div class="uploadContainer">
+ <div id="saveButton">
+  <%= form_for(@stream) do |f| %>
                 <%= f.hidden_field :url, :id => "gifField" %>
                 <%= f.submit "save gif", :id => "saveGif" %>
               <% end %>
-
- <div class="uploadContainer">
+</div>
     
   <form id='imageForm' >
       <div class="upload">
@@ -66,6 +69,7 @@
 
 <script type="text/javascript">
 $('#gifHolder').hide();
+$('#saveGif').hide();
 var image;
 $(document).ready(function() {
     var counter = 0;
@@ -208,7 +212,7 @@ console.log('this is being accessed')
   
   for (var i = 0; i <imageCanvas.length; i++) {
     ctx = imageCanvas[i].getContext('2d');
-    gif.addFrame(ctx, {copy: true, delay: 320});
+    gif.addFrame(ctx, {copy: true, delay: 390});
   };
 gif.on('finished', function(blob) {
     
@@ -240,9 +244,10 @@ xhr.onload = function() {
     success: function(response) {
         if(response.success) {
           var gifField = document.getElementById('gifField');
+          var saveGif = document.getElementById('saveGif');
           console.log(response.data.link)         
           gifField.setAttribute('value',response.data.link.replace("http:",""));
-            
+          saveGif.style.display = 'inline-block';
         }
     }
 });
@@ -273,5 +278,6 @@ window.scrollTo(0, 0);
 $('#deleteGif').click(function() {
   $('.gifClass').replaceWith('<img src="" class="gifClass">');
   $('#gifHolder').hide();
+  $('#saveGif').hide();
 });
 </script>
