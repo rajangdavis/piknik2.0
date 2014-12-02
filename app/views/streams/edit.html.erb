@@ -212,7 +212,7 @@ console.log('this is being accessed')
   
   for (var i = 0; i <imageCanvas.length; i++) {
     ctx = imageCanvas[i].getContext('2d');
-    gif.addFrame(ctx, {copy: true, delay: 390});
+    gif.addFrame(ctx, {copy: true, delay: 500});
   };
 gif.on('finished', function(blob) {
     
