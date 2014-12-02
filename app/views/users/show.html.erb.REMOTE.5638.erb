@@ -19,7 +19,7 @@
 			<div id='newStreamForm'>
 				<div id="streamHeader">create a stream</div>
 				<%= form_for(@stream,{method: :create}) do |f| %>
-				<div><%= f.text_field :name, :placeholder => "", :id => "createStreamField"%></div>
+				<div><%= f.text_field :name, :placeholder => "stream name", :id => "createStreamField"%></div>
 				<%= f.hidden_field :user_id, :value => current_user.id%>
 				<div><%= f.submit "create stream", :id => "createStream"%></div>
 					<% end %>
@@ -28,14 +28,11 @@
 			
 		<% @streams.each do |stream| %>
 			<div class="gifHolderShow">
-				<a href="<%= stream.url %>" target="_blank"><img src="<%= stream.url %>" class="gifClass" /></a>
+				<img src="" class="gifClass" />
 				<div id="smallStreamName">
 					<%= stream.name %>
 				</div>
-				<div><a href="//www.facebook.com/sharer.php?u=<%= stream.url %>">Share this on facebook</a></div>
-		<div class="button_to_icon"><%= button_to '', delete_stream_path(:stream => stream.id), method: :delete, :class => 'hideButton'%>
-			<i class="fa fa-trash" class="moveUpIcon"></i>
-		</div>
+<%= button_to 'delete', delete_stream_path(:stream => stream.id), method: :delete, :class=> 'hideButton'%>
 
 
 			</div>
@@ -49,4 +46,3 @@
 
 
 </div>
-

@@ -32,10 +32,15 @@
 				<div id="smallStreamName">
 					<%= stream.name %>
 				</div>
-				<div><a href="//www.facebook.com/sharer.php?u=<%= stream.url %>">Share this on facebook</a></div>
+<<<<<<< HEAD
+
 		<div class="button_to_icon"><%= button_to '', delete_stream_path(:stream => stream.id), method: :delete, :class => 'hideButton'%>
 			<i class="fa fa-trash" class="moveUpIcon"></i>
 		</div>
+=======
+				<div><a href="//www.facebook.com/sharer.php?u=<%= stream.url %>">Share this on facebook</a></div>
+<%= button_to 'delete', delete_stream_path(:stream => stream.id), method: :delete, :class=> 'hideButton'%>
+>>>>>>> master
 
 
 			</div>

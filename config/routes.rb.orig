@@ -1,26 +1,29 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-  
-    resources :streams, only: [:new,:create,:update, :index, :show]
-    resources :users
-    get 'streams/:id/this_is_not_an_edit_page' => "streams#edit", as: :edit_stream
-    delete 'streams/:stream' => "streams#destroy", as: :delete_stream
-=======
   namespace :api, defaults: {format: :json} do
+<<<<<<< HEAD
     resources :streams, except: [:edit]
     resources :users
   end
-    resources :streams, except: [:edit]
+    resources :streams, only: [:new,:create,:update, :index, :show]
+
+    delete 'streams/:stream' => "streams#destroy", as: :delete_stream
     resources :users
     get 'streams/:id/this_is_not_an_edit_page' => "streams#edit", as: :edit_stream
->>>>>>> master
+    get 'logout'=> 'sessions#destroy', as: 'logout'
+=======
+    resources :streams, except: [ :update]
+    resources :users
+  end
+    resources :streams
+    resources :users
+    # get 'streams/:id/this_is_not_an_edit_page' => "streams#edit", as: :edit_stream
+ 
+    delete 'streams/:stream' => "streams#destroy", as: :delete_stream
     get 'logout', to: 'sessions#destroy', as: 'logout'
+>>>>>>> master
     resources :sessions
     root 'sessions#new'
-<<<<<<< HEAD
-=======
 
->>>>>>> master
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
