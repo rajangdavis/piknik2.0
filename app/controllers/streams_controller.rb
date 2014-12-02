@@ -7,6 +7,7 @@ class StreamsController < ApplicationController
   
   def edit
     @stream = Stream.find(params[:id])
+    
   end
 
   def index
@@ -18,7 +19,7 @@ class StreamsController < ApplicationController
   def update
     
     @stream = Stream.find(params[:id])
-    if @stream.update_attributes(stream_params2)
+    if @stream.update(stream_params)
       redirect_to user_path(@stream.user_id)
     else
       render 'edit'
@@ -28,7 +29,7 @@ class StreamsController < ApplicationController
   def create
 
     @user_id = current_user.id
-    @stream = Stream.new(stream_params1)
+    @stream = Stream.new(stream_params)
     if @stream.save
       redirect_to edit_stream_path(@stream)
     else
@@ -37,7 +38,7 @@ class StreamsController < ApplicationController
   end
 
   def destroy
-    @stream = Stream.find(params[:stream])
+    @stream = Stream.find(params[:id])
     @stream.destroy
     redirect_to(:back)
   end
@@ -45,11 +46,9 @@ class StreamsController < ApplicationController
   
   private
 
-  def stream_params1
-    params.require(:stream).permit(:name, :user_id)
+  def stream_params   
+    params.require(:stream).permit(:name, :user_id, :url)
   end
 
-  def stream_params2
-    params.require(:stream).permit(:url)
-  end
+  
 end
