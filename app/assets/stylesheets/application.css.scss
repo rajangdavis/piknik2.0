@@ -18,13 +18,16 @@
  	color:#265263;
  	text-decoration: none;
  	cursor: pointer;
- 	margin-left: 10px;
+ 	// margin-left: 10px;
  }
 
  a:hover{
- 	color:#75c2e0;
+ 	color:white;
  	 	text-decoration: none;
  }
+
+
+
 
  a:active{
  	color:#75c2e0;
@@ -40,30 +43,28 @@
 
  ::-webkit-input-placeholder {
    color: #adadad;
-   font-family: 'iskra';
-   font-weight: 700;
-   font-style: italic;
+   font-family: 'Lemon';
+   font-size: 10px;
+
+
 }
 
 :-moz-placeholder { /* Firefox 18- */
    color: #adadad;
-      font-family: 'iskra';
-   font-weight: 700;
-   font-style: italic;
+   font-family: 'Lemon';
+   font-size: 10px;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
    color: #adadad; 
-      font-family: 'iskra';
-   font-weight: 700;
-   font-style: italic; 
+   font-family: 'Lemon';
+   font-size: 10px;
 }
 
 :-ms-input-placeholder {  
    color: #adadad;
-      font-family: 'iskra';
-   font-weight: 700;
-   font-style: italic;  
+   font-family: 'Lemon';
+   font-size: 10px;
 }
 
 *:focus {
@@ -91,9 +92,9 @@
 }
 
 #container{
-	margin-left: 30%;
-	width: 40%;
-	position: absolute;
+
+	width: 100%;
+	position: relative;
 	top: 30%;
 	z-index: 100;
 
@@ -101,35 +102,35 @@
 
 
 #home_logo{
-	width: 100%;
+	position: relative;
+	width: 500px;
 	height: 150px;
 	background-image: url(image-path('piknik_logo.png'));
 	background-position: center center;
 	background-repeat: no-repeat;
-	background-size: 70%;
-	z-index: 200;
+	background-size: 350px;
+	z-index: 2000 !important;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-#signup_button{
-
+#signup_button2{
+	margin-top: 70px;
 	height: 80px;
-
-
-
 	background-image: url(image-path('piknik_signup.png'));
 	background-position: center center;
 	background-repeat: no-repeat;
-	background-size: 40%;
+	background-size: 200px;
 	transition: all .3s ease-in-out;
 	z-index: -100;
 	cursor: pointer;
 }
 
-#signup_button:hover{
+#signup_button2:hover{
 	transform: scale(1.2,1.2);
 	transition: all .3s ease-in-out;
 }
-#signup_button:active{
+#signup_button2:active{
 	transform: scale(1,1);
 	transition: all .1s ease-in-out;
 }
@@ -143,7 +144,7 @@
 	background-image: url(image-path('piknik_login.png'));
 	background-position: center center;
 	background-repeat: no-repeat;
-	background-size: 30%;
+	background-size: 160px;
 	transition: all .3s ease-in-out;
 	z-index: -100;
 	cursor: pointer;
@@ -174,56 +175,41 @@
 }
 
 
-
-#tongue{
-	position: absolute;
-	z-index: -20;
-	width: 100%;
-	height: 0px;
-	background-image: url(image-path('tongue.png'));
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: 50%;
-	transition: all .3s ease-in-out;
-	opacity: 0;
-
-}
-
 .input_field{
 	width: 150px;
 	height: 30px;
-	background-color: #a5d9ed;
+	background-color: white;
 	border-radius: 90px;
 	margin-bottom: 10px;
 	padding: 0px;
 	border: 0px;
-	text-align: center;
+	text-indent: 20px;
+   font-family: 'Lemon';
 	color: #29444e;
+	display: block;
 	transition: all .3s ease-in-out;
 }
 
 .submit_button{
 	width: 150px;
 	height: 30px;
-	   font-family: 'iskra';
-   font-weight: 700;
-   font-style: italic;
+   font-family: 'Lemon';
 
 	background-color: yellow;
 	border-radius: 90px;
-	margin-bottom: 10px;
+	margin-bottom: 6px;
 	padding: 0px;
 	border: 0px solid #66aac5;
 	cursor: pointer;
 	color: #6e631c;
 	background: #ffe223; /* Old browsers */
-background: -moz-linear-gradient(top,  #ffe223 0%, #d6c136 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffe223), color-stop(100%,#d6c136)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #ffe223 0%,#d6c136 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #ffe223 0%,#d6c136 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #ffe223 0%,#d6c136 100%); /* IE10+ */
-background: linear-gradient(to bottom,  #ffe223 0%,#d6c136 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe223', endColorstr='#d6c136',GradientType=0 ); /* IE6-9 */
+	background: -moz-linear-gradient(top,  #ffe223 0%, #d6c136 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffe223), color-stop(100%,#d6c136)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #ffe223 0%,#d6c136 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #ffe223 0%,#d6c136 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #ffe223 0%,#d6c136 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #ffe223 0%,#d6c136 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe223', endColorstr='#d6c136',GradientType=0 ); /* IE6-9 */
 
 }
 
@@ -232,25 +218,56 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe223', end
 	border-image-outset: 1px;
 }
 
-#signup_form{
-	left: 215px;
-	top: -40px;
-	position: absolute;
-	width: 100px;
+
+
+#login_form{
+
 	text-align: center;
+	margin-left: 25%;
+	margin-right: auto;
+	position: relative;
 	border-radius: 90px;
 	transition: all .3s ease-in-out;
+	width: 150px;
+
 
 }
 
-#login_form{
-	left: 215px;
-	top: -30px;
+.formContainer{
+	top: 65px;
+	width: 30%;
+	margin-left: 35%;
 	position: absolute;
-	width: 100px;
+
+}
+
+#tongue{
+	z-index: -2000;
+	width: 300px;
+	margin-top: -78px;
+	margin-left: auto;
+	margin-right: auto;
+	background-image: url(image-path('tongue.png'));
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 270px;
+	transition: all .3s ease-in-out;
+	opacity: 0;
 	text-align: center;
+	position: relative;
+
+
+}
+
+#signup_form{
+
+	text-align: center;
+	margin-left: 25%;
+	margin-right: auto;
+	position: relative;
 	border-radius: 90px;
 	transition: all .3s ease-in-out;
+	width: 150px;
 
 }
 
@@ -258,16 +275,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe223', end
 	color: #29444e;
 	opacity: .5;
 	cursor: pointer;
-	font-size: 12px;
-	margin-left: 46px;
+	font-size: 10px;
+	margin-left: 0px;
+
 }
 
 .close_login_button{
 	color: #29444e;
 	opacity: .5;
 	cursor: pointer;
-	font-size: 12px;
-	margin-left: 46px;
+	font-size: 10px;
+	margin-left: 0px;
 }
 
 .close_signup_button:hover{
@@ -290,16 +308,16 @@ body{
 	background: #222222;
 	width: 100%;
 	height: 100%;
-	font-family: 'iskra';
-   font-weight: 700;
-   font-style: italic;
+   font-family: 'Lemon';
 }
 
-input{
+.input{
 
+   font-family: 'Lemon';  
+}
 /*	background: #212121 !important;	
 	color: #212121 !important;*/
-}
+
 
 
 /*#grid{
@@ -363,7 +381,7 @@ input{
 	line-height: 60px;
 	font-family: FontAwesome;
 	font-style: normal;
-	color: #b7b7b7;
+	color: #79888e;
 	cursor: ns-resize;
 }
 
@@ -374,7 +392,7 @@ input{
 	line-height: 60px;
 	font-family: FontAwesome;
 		font-style: normal;
-	color: #b7b7b7;
+	color: #79888e;
 	cursor: ns-resize;
 }
 
@@ -388,7 +406,7 @@ input{
 	position: absolute;
 	cursor: ns-resize;
 	color: #b7b7b7;
-	background-color: rgba(255, 255, 255, .4);
+	background-color: rgba(255, 255, 255, .8);
 	z-index: 100;
 	vertical-align: bottom;
 		font-style: normal;
@@ -407,7 +425,7 @@ input{
 
 
 .sort-handle:active{
-	background-color: white !important;
+	background-color: #d6c136 !important;
 	color:black;
 
 }
@@ -420,7 +438,7 @@ input{
 	line-height: 60px;
 	font-family: FontAwesome;
 		font-style: normal;
-	color: #b7b7b7;
+	color: #79888e;
 	cursor: ns-resize;
 }
 
@@ -457,7 +475,7 @@ input{
 	font-size: 30px;
 	line-height: 60px;
 	font-family: FontAwesome;
-	color: #b7b7b7;
+	color: #79888e;
 	cursor: ns-resize;
 }
 
@@ -491,7 +509,7 @@ input{
 	font-size: 30px;
 	line-height: 60px;
 	font-family: FontAwesome;
-	color: #b7b7b7;
+	color: #79888e;
 	cursor: ns-resize;
 }
 
@@ -534,6 +552,7 @@ input{
 display: inline-block;
 float: left;
 	border: 12px solid white;
+	border-radius: 3px;
 	margin: 5px;
 }
 
@@ -573,7 +592,7 @@ tr{
 input {
 
 /*	padding: 10px 20px;*/
-	width: 640px;
+/*	width: 640px;*/
 /*	color: #777;*/
 }
 
@@ -589,6 +608,7 @@ input {
 
 div.upload {
 	float: right;
+	color: rgba(255,255,255,0);
     /*width: 640px;
     height: 60px;
     overflow: hidden;
@@ -599,7 +619,7 @@ div.upload {
 
 div.upload input {
     
-    width: 204px !important;
+    width: 208px !important;
 /*    text-align: center;
 */    
 }
@@ -630,14 +650,13 @@ border: 1px solid #437e94;
   white-space: nowrap;
   -webkit-user-select: none;
   cursor: pointer;
-     font-family: 'iskra';
-   font-weight: 700;
-   font-style: italic;
+   font-family: 'Lemon';
   line-height: 60px;
   font-size: 14pt;
 }
 #imgLoader:hover::before {
-border: 2px solid #437e94;
+border: 1px solid black;
+color: white;
 background: rgb(250,233,123); /* Old browsers */
 background: -moz-linear-gradient(top,  rgba(250,233,123,1) 0%, rgba(214,193,54,1) 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(250,233,123,1)), color-stop(100%,rgba(214,193,54,1))); /* Chrome,Safari4+ */
@@ -648,7 +667,7 @@ background: linear-gradient(to bottom,  rgba(250,233,123,1) 0%,rgba(214,193,54,1
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fae97b', endColorstr='#d6c136',GradientType=0 ); /* IE6-9 */
 }
 #imgLoader:active::before {
-border: 2px solid #437e94;
+border: 2px solid black;
 background: rgb(250,233,123); /* Old browsers */
 background: -moz-linear-gradient(top,  rgba(250,233,123,1) 0%, rgba(214,193,54,1) 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(250,233,123,1)), color-stop(100%,rgba(214,193,54,1))); /* Chrome,Safari4+ */
@@ -672,6 +691,10 @@ float: right;
 
 }
 
+#saveButton{
+	margin-top: 10px;
+}
+
 /*.spacer{
 
 height: 20px;
@@ -684,11 +707,9 @@ opacity: 0;
 #makeGif{
 
 
-	font-family: 'iskra';
-	font-weight: 700;
-	font-style: italic;
+   font-family: 'Lemon';
 	font-size: 18px;
-	width: 200px;
+	width: 160px;
 	height: 60px;
 	border-radius: 90px;
 background: rgb(211,124,78); /* Old browsers */
@@ -707,24 +728,29 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d37c4e', end
 	line-height: 60px;
 	margin-bottom: 20px;
 	float: right;
-	margin-right: 40px;
-	margin-left: 10px;
+	margin-right: 10px;
+	margin-left: 3px;
 	display: inline-block;
 	text-align: center;
 }
 
 #makeGif:hover{
 background-color: #3ab9ea;
-border: 2px solid #437e94;
+border: 1px solid black;
+color: white;
 }
+#makeGif:active{
+background-color: #3ab9ea;
+border: 2px solid black;
+color: white;
+}
+
 #saveGif{
 
 
-	font-family: 'iskra';
-	font-weight: 700;
-	font-style: italic;
+	font-family: 'Lemon';
 	font-size: 18px;
-	width: 200px;
+	width: 160px;
 	height: 60px;
 	border-radius: 90px;
 background: rgb(211,124,78); /* Old browsers */
@@ -740,18 +766,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d37c4e', end
 	border: 1px solid #437e94;
 	color: #7d411f;
 	cursor: pointer;
-	line-height: 60px;
+	line-height: 50px;
 	margin-bottom: 20px;
 	float: right;
-	margin-right: 40px;
-	margin-left: 10px;
+	margin-right: 20px;
+	margin-left: 0px;
 	display: inline-block;
 	text-align: center;
 }
 
 #saveGif:hover{
-background-color: #3ab9ea;
-border: 2px solid #437e94;
+color: white;
+border: 1px solid black;
+}
+
+#saveGif:active{
+border: 1px solid black;
 }
 
 #gifField{
@@ -823,7 +853,7 @@ box-shadow:         0px 3px 5px 0px rgba(50, 50, 50, 0.44);
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 120px;
-	border: 20px solid white;
+	border: 15px solid white;
 	width: 420px;
 	height: 480px;
 	background: white;
@@ -840,36 +870,93 @@ box-shadow:         0px 3px 5px 0px rgba(50, 50, 50, 0.44);
 .hideButton{
 	border: 0px;
 	background: none;
-	width:40px;
-	height:40px;
+	width:20px;
+	height:30px;
 	cursor: pointer;
 	z-index: 200;
-	position: relative;
+	position: absolute;
+	right: 6px;
 	float: right;
+	font-family: 'FontAwesome';
+}
 
+.button_to_icon{
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	right: -8px;
+	bottom: 23px;
+/*	border: 1px solid black;*/
+
+	font-size: 20px;
+/*	line-height: 60px;*/
+	color: #b7b7b7;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.button_to_icon:hover{
+color: red;
+}
+
+.facebookButton{
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	color: #d3400d;
+}
+
+.facebookLink{
 
 }
+
+
+#facebookIcon{
+	color: #b7b7b7;
+
+}
+#facebookIcon:hover{
+	color: #3792b5;
+	
+}
+
 
 
 #user_header{
 	position: absolute;
-	top: 44px;
+	top: 42px;
 	left: 180px;
 	color: #1a3c49;
-	font-family: 'iskra';
-	font-size: 14px;
-	font-style: normal;
-	font-weight: 700;
+   	font-family: 'Lemon';
 	z-index: 3000;
+}
+#user_header:hover{
+color:white;
 }
 
 #smallStreamName{
-	color: black;
-	font-size: 24px;
+	color: #2f240a;
+	font-size: 18px;
 	position: absolute;
-	left: 10px;
-	bottom: 20px;
+	left: 0px;
+	bottom: 26px;
 	font-family: courier;
+	width: 350px;
+	font-style: normal;
+}
+
+.imgurLink{
+	font-size: 10px;
+	position: absolute;
+	bottom: 6px;
+	color: #b7b7b7;
+	font-family: 'arial';
+	position: absolute;
+	right: 0px;
+}
+
+.space{
+	margin-left: 14px;
 }
 
 #createBG{
@@ -925,8 +1012,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6c136', end
 	width: 100%;
 	text-align: center;
 	margin-top: 100px;
-	font-size: 40px;
-	color: #274c59;
+	font-size: 33px;
+	color: white;
 	position: relative;
 
 }
@@ -948,8 +1035,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6c136', end
 	background: linear-gradient(to bottom,  rgba(175,226,246,1) 0%,rgba(107,178,206,1) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#afe2f6', endColorstr='#6bb2ce',GradientType=0 ); /* IE6-9 */
 	color: white;
-	font-family: 'iskra';
-	font-weight: 700;
+   font-family: 'Lemon';
 	font-size: 18px;
 	cursor: pointer;
 
@@ -966,17 +1052,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6c136', end
 	height: 50px !important;
 	outline: 0;
 	background: none;
-	border: 1px solid rgba(67, 126, 148, .5);
+	border: 0px solid rgba(67, 126, 148, .5);
 	border-radius: 60px;
 	background-color: white;
-	color: black;
-	text-align: center;
-	font-family: 'iskra';
-	font-weight: 700;
-	font-style: italic;
-	font-size: 18px;
+	color: #1e343b;
+	text-indent: 20px;
+	text-align: left;
+   font-family: 'Lemon';
+	font-size: 22px;
 	cursor: pointer;
-
+}
+#createStreamField:-input-placeholder{
+	color: blue;
 }
 
 #newStreamForm{
@@ -1026,7 +1113,6 @@ position: absolute;
 right: 5px;
 bottom: 20px;
 color: black;
-opacity: .5;
 }
 
 #deleteGif:hover{
@@ -1044,8 +1130,15 @@ opacity: 1;
 	font-style: normal;
 }
 
+#deleteGif:hover::before{
+
+color: red;
+}
+
 .gifClass{
 	background-color: black;
 	width: 420px;
 	height: 420px;
 }
+
+

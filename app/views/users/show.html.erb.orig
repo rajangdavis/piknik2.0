@@ -4,7 +4,7 @@
 
 			<span id="user_header">
 				<% if current_user %>
-			  	<span class="space"><%= link_to "log out", logout_path %></span>
+			  	<%= link_to "log out", logout_path %>
 				<% end %>
 			</span>
 		</div>
@@ -28,29 +28,19 @@
 			
 		<% @streams.each do |stream| %>
 			<div class="gifHolderShow">
-				
-				
-					<a href="<%= stream.url %>" target="_blank" ><img src="<%= stream.url %>" /></a>
-				
-
+				<a href="<%= stream.url %>" target="_blank"><img src="<%= stream.url %>" class="gifClass" /></a>
 				<div id="smallStreamName">
 					<%= stream.name %>
 				</div>
+<<<<<<< HEAD
 
-				<div class="facebookButton">
-
-				<a href="//www.facebook.com/sharer.php?u=<%= stream.url %>">
-
-					<i class="fa fa-facebook-square fa-1x" id="facebookIcon"></i>
-
-				</a>
-
-				</div>
-				<span class="imgurLink">http:<%= stream.url %></span>
-		<div class="button_to_icon">
-			<%= button_to '', delete_stream_path(:stream => stream.id), method: :delete, :class => 'hideButton'%>
+		<div class="button_to_icon"><%= button_to '', delete_stream_path(:stream => stream.id), method: :delete, :class => 'hideButton'%>
 			<i class="fa fa-trash" class="moveUpIcon"></i>
 		</div>
+=======
+				<div><a href="//www.facebook.com/sharer.php?u=<%= stream.url %>">Share this on facebook</a></div>
+<%= button_to 'delete', delete_stream_path(:stream => stream.id), method: :delete, :class=> 'hideButton'%>
+>>>>>>> master
 
 
 			</div>
