@@ -42,9 +42,9 @@
   <img src="" class="gifClass" />
   <div id="smallStreamName">
     <%= @stream.name %>
-  </div>
-  <div id="smallStreamName">
-    
+  </div><br>
+  <div id="imgurSuccess">
+    Your stream has been successfully uploaded to Imgur!  Click on 'Save Gif' to save your gif...
   </div>
   <div id="deleteGif"></div>
 </div>
@@ -240,9 +240,10 @@ xhr.onload = function() {
     success: function(response) {
         if(response.success) {
           var gifField = document.getElementById('gifField');
+          var imgurSuccess = document.getElementById('imgurSuccess');
           console.log(response.data.link)         
           gifField.setAttribute('value',response.data.link.replace("http:",""));
-            
+          imgurSuccess.style.display = 'inherit';
         }
     }
 });
