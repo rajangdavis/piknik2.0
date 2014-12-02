@@ -1,12 +1,39 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
+    it "has a valid factory" do 
+        expect(FactoryGirl.create(:user)).to be_valid
+    end
 
-	it { should validate_presence_of(:username)}
+    it "is invalid without a username" do
+        expect(FactoryGirl.build(:user, username: nil)).to be_invalid
+    end
 
-    it { should validate_presence_of (:password)}
+    it "is invalid without a password" do
+        expect(FactoryGirl.build(:user, password: nil)).to be_invalid
+    end
 
-	it { should have_many(:streams) }
+
+
+    # it "has many streams" do
+    #     expect((user).to have_many_streams
+    # end
+
+
+    # it { should have_many(:streams) }
+
+
+
+
+
+
+
+
+	# it { should validate_presence_of(:username)}
+
+ #    it { should validate_presence_of (:password)}
+
+	
 
 
     #EXAMPLE

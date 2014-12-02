@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
 
     has_many :streams
 
-    validates_presence_of :username
+    validates_presence_of :username, :password
+   
     
 
 end
