@@ -129,7 +129,7 @@ document.getElementById('imgLoader').onchange = function handleImage(e) {
         $('.scale[rel='+counter+']').slider({
             animate: "fast",
             orientation: "vertical",
-            min: 700,
+            min: 300,
             max: 1000,
             step: 1,
             value: 800,
@@ -151,8 +151,8 @@ document.getElementById('imgLoader').onchange = function handleImage(e) {
         $('.rotate[rel='+counter+']').slider({
             orientation: "vertical",
             animate: "fast",
-            min: -30,
-            max: 30,
+            min: -200,
+            max: 200,
             step: 1,
             value: 0,
             slide: function(event, ui) {
