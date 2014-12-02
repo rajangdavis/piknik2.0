@@ -18,7 +18,7 @@ class StreamsController < ApplicationController
   def update
     
     @stream = Stream.find(params[:id])
-    if @stream.update_attributes(stream_params2)
+    if @stream.update(stream_params)
       redirect_to user_path(@stream.user_id)
     else
       render 'edit'
@@ -45,11 +45,9 @@ class StreamsController < ApplicationController
   
   private
 
-  def stream_params1
-    params.require(:stream).permit(:name, :user_id)
+  def stream_params   
+    params.require(:stream).permit(:name, :user_id, :url)
   end
 
-  def stream_params2
-    params.require(:stream).permit(:url)
-  end
+  
 end

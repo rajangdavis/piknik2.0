@@ -3,7 +3,7 @@
   <div id="container">
     <div id="home_logo"></div>
 
-    <div id="tongue">
+    <div id="tongue"> 
 
         <div id="login_form">
           <%= form_for(@user,{url:sessions_path}) do |f| %>
@@ -15,31 +15,27 @@
         </div>
 
 
-        <div id="signup_form">
-          <%= form_for(@user) do |f| %>
-            <%= f.text_field :username, :placeholder =>"create username", :class => "input_field" %>
-            <%= f.password_field :password, :placeholder =>"create password", :class => "input_field" %>
-            <%= f.password_field :password_confirmation, :placeholder =>"confirm password" , :class => "input_field"%>
-            <%= f.submit "submit", :class => "submit_button", :id => "submit_signup_button"%>
-          <% end %>
-          <span class="close_signup_button">cancel</span>
-        </div>
 
-  </div>
+          <div id="signup_form">
+            <%= form_for(@user) do |f| %>
+              <%= f.text_field :username, :placeholder =>"create username", :class => "input_field" %>
+              <%= f.password_field :password, :placeholder =>"create password", :class => "input_field" %>
+              <%= f.password_field :password_confirmation, :placeholder =>"confirm password" , :class => "input_field"%>
+              <%= f.submit "submit", :class => "submit_button", :id => "submit_signup_button"%>
+            <% end %>
+            <span class="close_signup_button">cancel</span>
+          </div>
 
-    <div id="signup_button"></div>
+
+ </div>
+    <div id="signup_button2"></div>
     <div id="login_button"></div>
   </div>
     
 
 
 
-  <canvas id="homeCanvas">
 
-  <img src="<%= asset_path( 'selfie1.jpg' ) %>" id="selfie1"/>
-
-
-  </canvas>
   <div class="blue_cover"></div>
 
 </div>
@@ -110,7 +106,7 @@ $('#submit_login_button').click(function submitLoginFunction() {
     $(".blue_cover").css("top", "50%");
   $(".blue_cover").css("left", "50%");
   $(".blue_cover").css("border-radius", "300px");  
-  $('#signup_button').toggle();
+  $('#signup_button2').toggle();
   $('#login_button').toggle();
     $('#login_form').toggle();
   $('#tongue').css("height", "0px");
@@ -120,7 +116,7 @@ $('#submit_login_button').click(function submitLoginFunction() {
 });
 
 
-$('#signup_button').click(function signupFunction() {
+$('#signup_button2').click(function signupFunction() {
 
   $(".blue_cover").css("opacity", ".8");
   $(".blue_cover").css("width", "100%");
@@ -128,11 +124,11 @@ $('#signup_button').click(function signupFunction() {
   $(".blue_cover").css("border-radius", "0px");  
       $(".blue_cover").css("top", "0%");
   $(".blue_cover").css("left", "0%");
-  $('#signup_button').toggle();
+  $('#signup_button2').toggle();
   $('#login_button').toggle();
   $('#signup_form').toggle();
   $('#tongue').css("height", "300px");
-  $('#tongue').css("top", "80px");
+  $('#tongue').css("top", "0px");
   $('#tongue').css("opacity", "1");
   
   $('#signup_form').css("top", "60px");
@@ -148,7 +144,7 @@ $('.close_signup_button').click(function closeSignupFunction() {
     $(".blue_cover").css("top", "50%");
   $(".blue_cover").css("left", "50%");
   $(".blue_cover").css("border-radius", "300px");  
-  $('#signup_button').toggle();
+  $('#signup_button2').toggle();
   $('#signup_form').toggle();
   $('#login_button').toggle();
   $('#tongue').css("height", "0px");
@@ -167,11 +163,11 @@ $('#login_button').click(function signupFunction() {
   $(".blue_cover").css("border-radius", "0px");  
       $(".blue_cover").css("top", "0%");
   $(".blue_cover").css("left", "0%");
-  $('#signup_button').toggle();
+  $('#signup_button2').toggle();
   $('#login_button').toggle();
   $('#login_form').toggle();
   $('#tongue').css("height", "300px");
-  $('#tongue').css("top", "80px");
+  $('#tongue').css("top", "0px");
   $('#tongue').css("opacity", "1");
   
   $('#login_form').css("top", "80px");
@@ -187,7 +183,7 @@ $('.close_login_button').click(function closeLoginFunction() {
     $(".blue_cover").css("top", "50%");
   $(".blue_cover").css("left", "50%");
   $(".blue_cover").css("border-radius", "300px");  
-  $('#signup_button').toggle();
+  $('#signup_button2').toggle();
   $('#login_button').toggle();
     $('#login_form').toggle();
   $('#tongue').css("height", "0px");
