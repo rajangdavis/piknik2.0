@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-<%= form_for(@stream,{method: :create}) do |f| %>
-	<%= f.text_field :name, :placeholder => "Stream Name"%>
-	<%= f.hidden_field :user_id, :value => current_user.id%>
-	<%= f.submit "Create Stream"%>
-<% end %>
-
-<% unless @streams.blank? %>
-	<% @streams.each do |stream|%>
-		<% if stream.user_id == @user.id%>
-			<%= stream.name %><br>
-			<a href="<%=stream.url%>" target="_blank"><img src="<%=stream.url%>"></a><br>
-			<% if stream.user_id == current_user.id%>
-				<%= button_to "Delete", delete_stream_path(:stream => stream.id), method: :delete%><br>
-			<% end %>
-		<% end %>
-	<% end %>	
-<% else %>
-	<p>you has none</p>
-<% end %>
-=======
 <div id="floating-header">
 	<div id="header">
 		<div id="logo_small"></div>
@@ -49,10 +28,11 @@
 			
 		<% @streams.each do |stream| %>
 			<div class="gifHolderShow">
-				<img src="" class="gifClass" />
+				<a href="<%= stream.url %>" target="_blank"><img src="<%= stream.url %>" class="gifClass" /></a>
 				<div id="smallStreamName">
 					<%= stream.name %>
 				</div>
+				<div><a href="//www.facebook.com/sharer.php?u=<%= stream.url %>">Share this on facebook</a></div>
 <%= button_to 'delete', delete_stream_path(:stream => stream.id), method: :delete, :class=> 'hideButton'%>
 
 
@@ -67,4 +47,4 @@
 
 
 </div>
->>>>>>> master
+
