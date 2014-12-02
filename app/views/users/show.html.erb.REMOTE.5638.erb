@@ -28,11 +28,10 @@
 			
 		<% @streams.each do |stream| %>
 			<div class="gifHolderShow">
-				<a href="<%= stream.url %>" target="_blank"><img src="<%= stream.url %>" class="gifClass" /></a>
+				<img src="" class="gifClass" />
 				<div id="smallStreamName">
 					<%= stream.name %>
 				</div>
-				<div><a href="//www.facebook.com/sharer.php?u=<%= stream.url %>">Share this on facebook</a></div>
 <%= button_to 'delete', delete_stream_path(:stream => stream.id), method: :delete, :class=> 'hideButton'%>
 
 
@@ -47,4 +46,3 @@
 
 
 </div>
-

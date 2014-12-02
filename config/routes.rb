@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resources :streams, except: [:edit]
-    resources :streams, only: [:new,:create,:update, :index, :show]
     resources :users
   end
-    get 'streams/:id/this_is_not_an_edit_page' => "streams#edit", as: :edit_stream
-    delete 'streams/:stream' => "streams#destroy", as: :delete_stream
+    resources :streams, only: [:new,:create,:update, :index, :show]
     resources :users
     get 'streams/:id/this_is_not_an_edit_page' => "streams#edit", as: :edit_stream
+    patch 'streams/:id/this_is_not_an_edit_page' => "streams#update"
+    delete 'streams/:stream' => "streams#destroy", as: :delete_stream
     get 'logout', to: 'sessions#destroy', as: 'logout'
     resources :sessions
     root 'sessions#new'
